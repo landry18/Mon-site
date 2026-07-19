@@ -1,0 +1,467 @@
+/* =========================================================
+   FreeBasics — feuille de style
+   Mobile-first, 100% CSS, aucune dépendance JavaScript
+   ========================================================= */
+
+:root {
+  --ink: #1B2430;
+  --ink-soft: #4A5566;
+  --paper: #F4F6F0;
+  --paper-card: #EAEDE2;
+  --line: #C9CDBB;
+  --chalk-green: #2F6F4E;
+  --chalk-green-dark: #234F39;
+  --highlight: #F4C95D;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+
+  --radius: 14px;
+  --max-width: 68rem;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  font-size: 1rem;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: var(--chalk-green-dark); }
+
+.wrap {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+/* Skip link (accessibilité clavier) */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--chalk-green);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 0 8px 0;
+  z-index: 100;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+/* Focus visible partout, sans dépendre de JS */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--highlight);
+  outline-offset: 2px;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+@supports (backdrop-filter: blur(1px)) {
+  .site-header {
+    background: rgba(244, 246, 240, 0.96);
+    backdrop-filter: saturate(140%) blur(6px);
+  }
+}
+
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  row-gap: 0.6rem;
+  column-gap: 1rem;
+  padding-block: 0.75rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.brand-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  background: var(--chalk-green);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  letter-spacing: 0.02em;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  white-space: nowrap;
+}
+
+.site-nav {
+  display: flex;
+  gap: 0.9rem 1.1rem;
+  flex-wrap: wrap;
+  order: 3;
+  flex-basis: 100%;
+  padding-top: 0.35rem;
+  border-top: 1px solid var(--line);
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.4rem 0.2rem;
+}
+
+.site-nav a:hover { color: var(--chalk-green-dark); }
+
+/* ---------- Hero ---------- */
+.hero {
+  padding-block: 2.5rem 3rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.hero-inner {
+  display: grid;
+  gap: 2rem;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  color: var(--chalk-green-dark);
+  margin: 0 0 0.9rem;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.9rem, 5vw + 0.5rem, 3.2rem);
+  line-height: 1.12;
+  margin: 0 0 1rem;
+}
+
+.lede {
+  font-size: clamp(1rem, 1.6vw + 0.5rem, 1.15rem);
+  color: var(--ink-soft);
+  max-width: 38rem;
+  margin: 0 0 1.75rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.75rem 1.3rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: var(--chalk-green);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--chalk-green-dark); }
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--line);
+  color: var(--ink);
+}
+.btn-ghost:hover { border-color: var(--chalk-green); color: var(--chalk-green-dark); }
+
+.hero-panel {
+  background: var(--chalk-green);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 1.5rem 1.5rem 1.75rem;
+}
+
+.hero-panel-label {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+  margin: 0 0 1rem;
+}
+
+.hero-panel-list {
+  margin: 0;
+  padding-left: 1.3rem;
+  display: grid;
+  gap: 0.7rem;
+  font-size: 0.98rem;
+}
+
+.hero-panel-list li::marker {
+  font-family: var(--font-mono);
+  color: var(--highlight);
+}
+
+/* ---------- Section headings ---------- */
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 2.5vw + 0.6rem, 2.1rem);
+  margin: 0 0 0.5rem;
+}
+
+.section-sub {
+  color: var(--ink-soft);
+  margin: 0 0 2rem;
+  max-width: 38rem;
+}
+
+.lessons, .tips, .faq { padding-block: 3rem; }
+.lessons { border-bottom: 1px solid var(--line); }
+.tips { border-bottom: 1px solid var(--line); background: #EFF2E8; }
+.faq { border-bottom: 1px solid var(--line); }
+
+/* ---------- Lessons (carnet de bord) ---------- */
+.lesson-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.lesson {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: start;
+  background: var(--paper-card);
+  border-left: 3px dashed var(--chalk-green);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1.1rem 1.25rem;
+}
+
+.lesson-check {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+}
+
+.lesson-check input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  accent-color: var(--chalk-green);
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.lesson-num {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--chalk-green-dark);
+}
+
+.lesson-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  margin: 0 0 0.4rem;
+}
+
+.lesson-body p {
+  margin: 0 0 0.4rem;
+  color: var(--ink-soft);
+}
+
+.lesson-meta {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--chalk-green-dark) !important;
+  margin: 0 !important;
+}
+
+/* ---------- Tips ---------- */
+.tip-grid {
+  display: grid;
+  gap: 1.1rem;
+  grid-template-columns: 1fr;
+}
+
+.tip-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+
+.tip-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #fff;
+  background: var(--chalk-green);
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+  margin: 0 0 0.7rem;
+}
+
+.tip-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  margin: 0 0 0.5rem;
+}
+
+.tip-card p {
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+/* ---------- FAQ (accordéon 100% CSS via <details>) ---------- */
+.faq-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.faq-item {
+  background: var(--paper-card);
+  border-radius: 10px;
+  padding: 0.9rem 1.1rem;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  font-weight: 600;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 44px;
+}
+
+.faq-item summary::-webkit-details-marker { display: none; }
+
+.faq-item summary::after {
+  content: "+";
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  color: var(--chalk-green-dark);
+  margin-left: 1rem;
+  flex-shrink: 0;
+}
+
+.faq-item[open] summary::after { content: "–"; }
+
+.faq-item p {
+  margin: 0.75rem 0 0.25rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- About ---------- */
+.about { padding-block: 3rem; }
+.about-inner { max-width: 42rem; }
+.about p { color: var(--ink-soft); }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  padding-block: 2rem;
+  background: var(--chalk-green-dark);
+  color: #EFF2E8;
+}
+
+.footer-inner p { margin: 0.2rem 0; }
+.footer-fine { font-family: var(--font-mono); font-size: 0.78rem; opacity: 0.75; }
+
+/* =========================================================
+   Responsive breakpoints — Mobile-first
+   ========================================================= */
+
+/* Tablette et plus (>= 640px) */
+@media (min-width: 40em) {
+  .tip-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Ordinateur (>= 960px) */
+@media (min-width: 60em) {
+  .hero-inner {
+    grid-template-columns: 1.4fr 1fr;
+    align-items: center;
+  }
+
+  .tip-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .lesson {
+    grid-template-columns: 4rem 1fr;
+  }
+
+  .brand-name { font-size: 1.2rem; }
+
+  .site-nav {
+    order: 0;
+    flex-basis: auto;
+    padding-top: 0;
+    border-top: none;
+  }
+}
+
+/* Très petits écrans (<= 380px) : on resserre un peu le rythme */
+@media (max-width: 23.75em) {
+  .wrap { padding-inline: 1rem; }
+  .hero { padding-block: 2rem; }
+  .btn { width: 100%; }
+  .hero-actions { flex-direction: column; }
+}
+
+/* Respect des préférences de mouvement réduit */
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; }
+}
+
+/* Amélioration tactile : zones cliquables suffisamment grandes partout */
+a, button, summary, .lesson-check {
+  -webkit-tap-highlight-color: transparent;
+}
